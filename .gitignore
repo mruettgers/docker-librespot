@@ -1,2 +1,2 @@
 # Temp directory used for cross builds
-.build
+/rpi/.build

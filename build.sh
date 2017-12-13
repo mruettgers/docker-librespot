@@ -1,4 +1,6 @@
 #!/bin/sh
 
-# Build aarch64 image
-(cd aarch64 && ./cross_build.sh)
+set -xe
+
+# Build Raspberry Pi image
+(cd rpi && ./cross_build.sh)
