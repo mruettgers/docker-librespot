@@ -6,7 +6,7 @@ set -xe
 [ -d .build ] || mkdir .build
 
 # Fetch sources
-curl -sSL https://codeload.github.com/plietar/librespot/tar.gz/master | tar -zxvf- -C .build/
+curl -sSL https://codeload.github.com/librespot-org/librespot/tar.gz/master | tar -zxvf- -C .build/
 
 # Build cross compilation image
 (cd .build/librespot-master && docker build -t librespot-cross -f ./contrib/Dockerfile .)
