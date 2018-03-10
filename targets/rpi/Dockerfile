@@ -6,4 +6,6 @@ ENV DEBIAN_FRONTEND noninteractive
 
 COPY .build/arm-unknown-linux-gnueabihf/release/librespot /usr/local/bin/
 
-CMD ["librespot"]
+COPY ../../files/ /
+
+ENTRYPOINT ["/docker/docker-entrypoint.sh"]
