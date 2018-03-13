@@ -4,8 +4,8 @@ MAINTAINER Michael Ruettgers <michael@ruettgers.eu>
 ENV LC_ALL C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 
-COPY .build/arm-unknown-linux-gnueabihf/release/librespot /usr/local/bin/
+COPY targets/rpi/.build/arm-unknown-linux-gnueabihf/release/librespot /usr/local/bin/
 
-COPY ../../files/ /
+COPY ./files/ /
 
 ENTRYPOINT ["/docker/docker-entrypoint.sh"]

@@ -20,6 +20,6 @@ RUN apk -U --no-cache add ${BUILD_PACKAGES} ${PACKAGES} && \
 	cd /tmp && \
 	rm -rf /tmp/librespot
 
-COPY ../../files/ /
+COPY ./files/ /
 
 ENTRYPOINT ["/docker/docker-entrypoint.sh"]

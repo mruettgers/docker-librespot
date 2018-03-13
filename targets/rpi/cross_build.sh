@@ -15,7 +15,7 @@ curl -sSL https://codeload.github.com/librespot-org/librespot/tar.gz/master | ta
 docker run -v $(PWD)"/.build:/build" librespot-cross cargo build --release --target arm-unknown-linux-gnueabihf --no-default-features
 
 # Build image with cross compiled binary
-docker build -t mruettgers/rpi-librespot ./
+docker build -t mruettgers/rpi-librespot -f Dockerfile ../../
 
 # Cleanup
 [ ! -d .build ] || rm -rf .build

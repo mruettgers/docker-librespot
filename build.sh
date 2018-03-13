@@ -6,4 +6,4 @@ set -xe
 (cd targets/rpi && ./cross_build.sh)
 
 # Build amd64 image
-docker build -t mruettgers/librespot targets/amd64/
+docker build -t mruettgers/librespot -f targets/amd64/Dockerfile .
