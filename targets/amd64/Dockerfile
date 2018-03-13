@@ -18,7 +18,8 @@ RUN apk -U --no-cache add ${BUILD_PACKAGES} ${PACKAGES} && \
 	cp target/release/librespot /usr/local/bin/ && \
  	apk --no-cache --purge del ${BUILD_PACKAGES} && \
 	cd /tmp && \
-	rm -rf /tmp/librespot
+	rm -rf /tmp/librespot && \
+	rm -rf ~/.cargo/
 
 COPY ./files/ /
 
