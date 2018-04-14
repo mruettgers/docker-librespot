@@ -4,6 +4,13 @@ MAINTAINER Michael Ruettgers <michael@ruettgers.eu>
 ENV LC_ALL C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 
+ENV PACKAGES \
+  net-tools
+
+RUN apt-get -y update && \
+  apt-get -y install ${PACKAGES} && \
+  apt-get -y clean
+
 COPY targets/rpi/.build/arm-unknown-linux-gnueabihf/release/librespot /usr/local/bin/
 
 COPY ./files/ /
