@@ -7,6 +7,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PACKAGES \
   net-tools
 
+COPY qemu-arm-static /usr/bin
+
 RUN apt-get -y update && \
   apt-get -y install ${PACKAGES} && \
   apt-get -y clean

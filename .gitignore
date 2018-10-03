@@ -1,2 +1,3 @@
 # Temp directory used for cross builds
-/rpi/.build
+targets/rpi/.build
+qemu-arm-static
