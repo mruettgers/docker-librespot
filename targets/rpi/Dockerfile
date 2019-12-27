@@ -1,19 +1,25 @@
-FROM arm32v7/debian:stretch-slim
-MAINTAINER Michael Ruettgers <michael@ruettgers.eu>
-
-ENV LC_ALL C.UTF-8
-ENV DEBIAN_FRONTEND noninteractive
+FROM alpine
 
 ENV PACKAGES \
-  net-tools
+	libgcc \
+	llvm-libunwind
 
-COPY qemu-arm-static /usr/bin
+ENV BUILD_PACKAGES \
+	git \
+	cargo \
+	portaudio-dev \
+	protobuf-dev
 
-RUN apt-get -y update && \
-  apt-get -y install ${PACKAGES} && \
-  apt-get -y clean
-
-COPY targets/rpi/.build/arm-unknown-linux-gnueabihf/release/librespot /usr/local/bin/
+RUN apk -U --no-cache add ${BUILD_PACKAGES} ${PACKAGES} && \
+	cd /tmp && \
+	git clone --depth=1 https://github.com/librespot-org/librespot.git && \
+	cd librespot && \
+	cargo build --jobs $(grep -c ^processor /proc/cpuinfo) --release --no-default-features && \
+	cp target/release/librespot /usr/local/bin/ && \
+ 	apk --no-cache --purge del ${BUILD_PACKAGES} && \
+	cd /tmp && \
+	rm -rf /tmp/librespot && \
+	rm -rf ~/.cargo/
 
 COPY ./files/ /
 
